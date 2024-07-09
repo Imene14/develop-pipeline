@@ -47,14 +47,3 @@ jobs:
           dockerfile: Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/spring-boot-app:today
-
-
-      - name: Debugging SSH
-        run: |
-          echo "Debugging SSH connection..."
-          echo "Connecting to imen@localhost on port 22"
-          ssh -p 222 imen@localhost "echo 'SSH connection successful'"
-
-      - name: Execute Commands on Localhost
-        run: |
-          ssh -p 2222 imen@localhost "echo 'Running commands on localhost' && hostname && whoami"

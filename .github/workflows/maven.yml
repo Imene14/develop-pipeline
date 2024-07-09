@@ -48,7 +48,13 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/spring-boot-app:today
 
-      
+      - name: install ssh keys
+          # check this thread to understand why its needed:
+          # <https://stackoverflow.com/a/70447517>
+        run: |
+            install -m 600 -D /dev/null ~/.ssh/id_rsa
+            echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+            ssh-keyscan -H ${{ secrets.VM_HOST }} > ~/.ssh/known_hosts
       - name: connect and pull
         run: ssh -v -p 2222 ${{ secrets.VM_USER }}@${{ secrets.VM_HOST }} "cd /app && docker compose pull && docker compose up -d && exit"
 

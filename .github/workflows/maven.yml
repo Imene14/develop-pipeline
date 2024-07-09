@@ -53,7 +53,7 @@ jobs:
         run: |
           echo "Debugging SSH connection..."
           echo "Connecting to imen@localhost on port 22"
-          ssh -p 2222 imen@localhost "echo 'SSH connection successful'"
+          ssh -p 222 imen@localhost "echo 'SSH connection successful'"
 
       - name: Execute Commands on Localhost
         run: |

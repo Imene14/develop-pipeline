@@ -56,6 +56,6 @@ jobs:
             echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
             ssh-keyscan -H ${{ secrets.VM_HOST }} > ~/.ssh/known_hosts
       - name: connect and pull
-        run: ssh -p 2222 ${{ secrets.VM_USER }}@${{ secrets.VM_HOST }} 
+        run: ssh -p 2222 ${{ secrets.VM_USER }}@${{ secrets.VM_HOST }} "cd /app && docker compose pull && docker compose up -d && exit"
       - name: cleanup
         run: rm -rf ~/.ssh

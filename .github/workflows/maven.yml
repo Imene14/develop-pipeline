@@ -55,7 +55,7 @@ jobs:
           VM_PASSWORD: ${{ secrets.VM_PASSWORD }}
           DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
         run: |
-          sshpass -p "${{ secrets.VM_PASSWORD }}" ssh -o StrictHostKeyChecking=no -T -p $VM_PORT $VM_USER@$VM_HOST << 'EOF'
+          ssh -p $VM_PORT $VM_USER@$VM_HOST << 'EOF'
             docker login -u $DOCKER_HUB_USERNAME -p ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
             docker pull $DOCKER_HUB_USERNAME/spring-boot-app:today
             docker stop spring-boot-app || true

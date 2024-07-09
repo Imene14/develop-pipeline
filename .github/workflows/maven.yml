@@ -47,3 +47,19 @@ jobs:
           dockerfile: Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/spring-boot-app:today
+
+
+      - name: Deploy to VM
+        env:
+          VM_HOST: ${{ secrets.VM_HOST }}
+          VM_USER: ${{ secrets.VM_USER }}
+          VM_PASSWORD: ${{ secrets.VM_PASSWORD }}
+          DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
+        run: |
+          sshpass -p "${{ secrets.VM_PASSWORD }}" ssh -o StrictHostKeyChecking=no $VM_USER@$VM_HOST << 'EOF'
+            docker login -u $DOCKER_HUB_USERNAME -p ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+            docker pull $DOCKER_HUB_USERNAME/spring-boot-app:today
+            docker stop spring-boot-app || true
+            docker rm spring-boot-app || true
+            docker run -d --name spring-boot-app -p 8085:8080 $DOCKER_HUB_USERNAME/spring-boot-app:today
+          EOF

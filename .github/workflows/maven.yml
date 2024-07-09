@@ -49,26 +49,12 @@ jobs:
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/spring-boot-app:today
 
 
-      - name: Install sshpass
-        run: sudo apt-get install -y sshpass
-
       - name: Debugging SSH
         run: |
           echo "Debugging SSH connection..."
-          echo "Connecting to ${{ secrets.VM_USER }}@${{ secrets.VM_HOST }} on port ${{ secrets.VM_PORT }}"
-          sshpass -p "${{ secrets.VM_PASSWORD }}" ssh -o StrictHostKeyChecking=no -vvv -p ${{ secrets.VM_PORT }} ${{ secrets.VM_USER }}@${{ secrets.VM_HOST }} "echo 'SSH connection successful'"
+          echo "Connecting to imen@localhost on port 22"
+          ssh -p 2222 imen@localhost "echo 'SSH connection successful'"
 
-      - name: Deploy to VM
-        env:
-          VM_PORT: ${{ secrets.VM_PORT }}
-          VM_USER: ${{ secrets.VM_USER }}
-          VM_PASSWORD: ${{ secrets.VM_PASSWORD }}
-          DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
+      - name: Execute Commands on Localhost
         run: |
-          sshpass -p "${{ secrets.VM_PASSWORD }}" ssh -o StrictHostKeyChecking=no -T -p 2222 imen@$localhost << 'EOF'
-            docker login -u $DOCKER_HUB_USERNAME -p ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
-            docker pull $DOCKER_HUB_USERNAME/spring-boot-app:today
-            docker stop spring-boot-app || true
-            docker rm spring-boot-app || true
-            docker run -d --name spring-boot-app -p 8085:8080 $DOCKER_HUB_USERNAME/spring-boot-app:today
-          EOF
+          ssh -p 2222 imen@localhost "echo 'Running commands on localhost' && hostname && whoami"

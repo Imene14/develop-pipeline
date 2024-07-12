@@ -64,6 +64,6 @@ jobs:
 
       - name: SSH into Vagrant VM and run Docker image
         run: |
-          vagrant ssh -c "sudo docker run hello-world"
+          vagrant ssh -c "sudo docker pull imen14/spring-boot-app:today"
 
       

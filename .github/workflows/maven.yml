@@ -48,6 +48,11 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/spring-boot-app:today
 
+      - name: Install VirtualBox
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y virtualbox virtualbox-dkms
+
       - name: Install Vagrant
         run: |
           sudo apt-get update

@@ -48,13 +48,15 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/spring-boot-app:today
 
-      - name: Install Vagrant
-        run: |
-           sudo apt-get update
-           sudo apt-get install -y vagrant
+      - name: Set up VirtualBox and Vagrant
+        uses: burrsutter/virtualbox-vagrant-action@v2
 
-      - name: Initialize Vagrant
+      - name: Initialize Vagrant with VirtualBox provider
         run: |
-          vagrant up --provision
+          vagrant up --provider=virtualbox --provision
+
+      - name: SSH into Vagrant VM and run Docker image
+        run: |
+          vagrant ssh -c "sudo docker run hello-world"
 
       

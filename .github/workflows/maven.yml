@@ -48,17 +48,8 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/spring-boot-app:today
 
-      - name: run on VM
-        env:
-          VM_PORT: ${{ secrets.VM_PORT }}
-          VM_USER: ${{ secrets.VM_USER }}
-          VM_PASSWORD: ${{ secrets.VM_PASSWORD }}
-          DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
+      - name: Initialize Vagrant
         run: |
-          ssh -p $VM_PORT $VM_USER@$VM_HOST << 'EOF'
-            docker login -u $DOCKER_HUB_USERNAME -p ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
-            docker pull $DOCKER_HUB_USERNAME/spring-boot-app:today
-            docker stop spring-boot-app || true
-            docker rm spring-boot-app || true
-            docker run -d --name spring-boot-app -p 8080:8080 $DOCKER_HUB_USERNAME/spring-boot-app:today
-          EOF
+          vagrant up --provision
+
+      

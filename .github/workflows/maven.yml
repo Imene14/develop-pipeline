@@ -62,7 +62,7 @@ jobs:
 
       - name: Run Docker Container
         run: |
-          sudo docker run -d --name spring-boot-app \
+          sudo docker run -d \
             -p 8085:8080 \
             ${{ secrets.DOCKER_HUB_USERNAME }}/spring-boot-app:today
 

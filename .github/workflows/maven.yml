@@ -48,7 +48,7 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/spring-boot-app:today
 
-      - name: Deploy to VM
+      - name: run on VM
         env:
           VM_PORT: ${{ secrets.VM_PORT }}
           VM_USER: ${{ secrets.VM_USER }}

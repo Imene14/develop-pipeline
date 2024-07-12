@@ -48,8 +48,10 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/spring-boot-app:today
 
-      - name: Set up VirtualBox and Vagrant
-        uses: burrsutter/virtualbox-vagrant-action@v2
+      - name: Install Vagrant
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y vagrant
 
       - name: Initialize Vagrant with VirtualBox provider
         run: |

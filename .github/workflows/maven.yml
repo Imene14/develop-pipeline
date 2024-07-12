@@ -48,22 +48,21 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/spring-boot-app:today
 
-      - name: Install VirtualBox
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y virtualbox virtualbox-dkms
+  deploy:
+    name: Deploy Docker Image on Self-Hosted Runner
+    runs-on: self-hosted
 
-      - name: Install Vagrant
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y vagrant
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-      - name: Initialize Vagrant with VirtualBox provider
-        run: |
-          vagrant up --provider=virtualbox --provision
+      - name: Pull Docker Image
+        run: docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/spring-boot-app:today
 
-      - name: SSH into Vagrant VM and run Docker image
+      - name: Run Docker Container
         run: |
-          vagrant ssh -c "sudo docker pull imen14/spring-boot-app:today"
+          docker run -d --name spring-boot-app \
+            -p 8085:8080 \
+            ${{ secrets.DOCKER_HUB_USERNAME }}/spring-boot-app:latest
 
       

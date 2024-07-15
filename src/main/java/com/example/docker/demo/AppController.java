@@ -7,5 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class AppController {
     @GetMapping
     public String hello() {
+        return "Hello World from vm";
     }
 }

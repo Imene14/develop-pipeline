@@ -63,9 +63,9 @@ jobs:
       - name: Stop and Remove Existing Container
         run: |
           CONTAINER_NAME="imen14/spring-boot-app:today"
-          if [ "$(sudo docker ps -a -q -f name=$CONTAINER_NAME)" ]; then
-            sudo docker stop $CONTAINER_NAME
-            
+          CONTAINER_ID=$(sudo docker ps -q -f name=$CONTAINER_NAME)
+          if [ ! -z "$CONTAINER_ID" ]; then
+            sudo docker stop $CONTAINER_ID
           fi
 
       - name: Run Docker Container

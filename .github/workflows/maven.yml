@@ -60,16 +60,14 @@ jobs:
       - name: Pull Docker Image
         run: sudo docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/spring-boot-app:today
 
-      - name: Stop and Remove Existing Container
+
+      - name: Run Docker Container
         run: |
           CONTAINER_NAME="imen14/spring-boot-app:today"
           CONTAINER_ID=$(sudo docker ps -q -f name=$CONTAINER_NAME)
           if [ ! -z "$CONTAINER_ID" ]; then
             sudo docker stop $CONTAINER_ID
           fi
-
-      - name: Run Docker Container
-        run: |
           sudo docker run -d \
             -p 8085:8080 \
             ${{ secrets.DOCKER_HUB_USERNAME }}/spring-boot-app:today

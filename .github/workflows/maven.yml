@@ -19,6 +19,14 @@ jobs:
           distribution: 'corretto'
           java-version: 17
 
+      - name: Cache Maven dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
       - name: Unit Tests
         run: mvn -B test --file pom.xml
 
@@ -35,23 +43,22 @@ jobs:
         run: |
           CONTAINER_NAME="spring-boot-app-container"
           HOST_PORT=8085
-          # Find the container ID by name
+          # Find and remove the container by name or port
           CONTAINER_ID=$(sudo docker ps -q -f name=$CONTAINER_NAME)
-          if [ ! -z "$CONTAINER_ID" ]; then
+          if [ -n "$CONTAINER_ID" ]; then
             echo "Stopping and removing container ID $CONTAINER_ID with name $CONTAINER_NAME"
             sudo docker stop $CONTAINER_ID
             sudo docker rm $CONTAINER_ID
           fi
-          # Additionally, check for any container using the specific host port
           CONTAINER_ID=$(sudo docker ps -q --filter "publish=$HOST_PORT")
-          if [ ! -z "$CONTAINER_ID" ]; then
+          if [ -n "$CONTAINER_ID" ]; then
             echo "Stopping and removing container ID $CONTAINER_ID using host port $HOST_PORT"
             sudo docker stop $CONTAINER_ID
             sudo docker rm $CONTAINER_ID
           fi
           # Confirm the container is removed
           REMOVED_CONTAINER_ID=$(sudo docker ps -aq -f name=$CONTAINER_NAME)
-          if [ ! -z "$REMOVED_CONTAINER_ID" ]; then
+          if [ -n "$REMOVED_CONTAINER_ID" ]; then
             echo "Removing container ID $REMOVED_CONTAINER_ID with name $CONTAINER_NAME"
             sudo docker rm -f $REMOVED_CONTAINER_ID
           fi
@@ -63,4 +70,3 @@ jobs:
             --name $CONTAINER_NAME \
             -p 8085:8080 \
             spring-boot-app:today
-

@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class AppController {
     @GetMapping
     public String hello() {
-        return "HIII!!! my name is Imen, HII !!! my age is 21, nice to meet you";
+        return "HIII!!! my name is Imen, HII !!! my age is 21,";
     }
 }

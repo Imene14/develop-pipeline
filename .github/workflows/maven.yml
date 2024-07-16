@@ -18,6 +18,8 @@ jobs:
         with:
           distribution: 'corretto'
           java-version: 17
+          cache: 'maven'
+          cache-dependency-path: 'sub-project/pom.xml'
 
       - name: Build the application
         run: |

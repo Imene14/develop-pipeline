@@ -26,9 +26,11 @@ jobs:
         run: |
           mvn clean
           mvn -B package --file pom.xml
+
       - name: Build Docker Image
         run: |
           sudo docker build -t spring-boot-app:today .
+
       - name: Stop and Remove Existing Container
         run: |
           CONTAINER_NAME="spring-boot-app-container"
@@ -47,6 +49,13 @@ jobs:
             sudo docker stop $CONTAINER_ID
             sudo docker rm $CONTAINER_ID
           fi
+          # Confirm the container is removed
+          REMOVED_CONTAINER_ID=$(sudo docker ps -aq -f name=$CONTAINER_NAME)
+          if [ ! -z "$REMOVED_CONTAINER_ID" ]; then
+            echo "Removing container ID $REMOVED_CONTAINER_ID with name $CONTAINER_NAME"
+            sudo docker rm -f $REMOVED_CONTAINER_ID
+          fi
+
       - name: Run Docker Container
         run: |
           CONTAINER_NAME="spring-boot-app-container"
@@ -54,3 +63,4 @@ jobs:
             --name $CONTAINER_NAME \
             -p 8085:8080 \
             spring-boot-app:today
+

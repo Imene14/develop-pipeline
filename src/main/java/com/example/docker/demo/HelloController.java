@@ -12,4 +12,8 @@ public class HelloController {
     public Map<String,String> Sayhello() {
         return Collections.singletonMap("message", "Hello world");
     }
+    @GetMapping("/submit")
+    public Map<String,String> submit() {
+        return Collections.singletonMap("message", "Submitted");
+    }
 }

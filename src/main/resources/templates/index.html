@@ -12,8 +12,11 @@
 <script>
     document.getElementById('btn').addEventListener('click', () => {
         fetch('/hello')  // Replace with your desired URL
-            .then(response => document.getElementById('hello-msg').innerText = response.json())
-            .then(data => console.log(data))
+            .then(response => response.json())
+            .then(data => {
+                // Assuming the response JSON has a "message" field
+                document.getElementById('hello-msg').textContent = data.message;
+            })
             .catch(error => console.error('Error:', error));
     });
 </script>

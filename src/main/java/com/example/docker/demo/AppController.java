@@ -13,4 +13,9 @@ public class AppController {
     public String hello() {
         return "index";
     }
+
+    @GetMapping("/submit")
+    public Map<String,String> submit() {
+        return Collections.singletonMap("message", "Submitted");
+    }
 }

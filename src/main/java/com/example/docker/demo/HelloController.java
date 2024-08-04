@@ -11,7 +11,7 @@ import java.util.Map;
 public class HelloController {
     @GetMapping("/hello")
     public Map<String,String> Sayhello() {
-        return Collections.singletonMap("message", "Hello world!!!");
+        return Collections.singletonMap("message", "Hello world!!!hi my ame");
     }
     @PostMapping("/submit")
     public Map<String,String> submit() {

@@ -13,7 +13,7 @@ public class HelloController {
     public Map<String,String> Sayhello() {
         return Collections.singletonMap("message", "Hello world!!! SECOND CHANGE FOR TODAYYY !my name is imen");
     }
-    @GetMapping("http://localhost:8085/hi")
+    @GetMapping("/hi")
     public Map<String,String> Sayhi() {
         return Collections.singletonMap("message", "Hello world!!! SECOND CHANGE FOR TODAYYY !my name is imen");
     }

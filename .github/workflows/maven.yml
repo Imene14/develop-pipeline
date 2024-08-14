@@ -56,6 +56,7 @@ jobs:
         run: |
           CONTAINER_NAME="spring-boot-app-container"
           sudo docker run -d \
+            --network my-net \
             --name $CONTAINER_NAME \
             -p 8085:8080 \
             spring-boot-app:today

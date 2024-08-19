@@ -14,4 +14,9 @@ public class AppController {
         return "index";
     }
 
+    @GetMapping("/users")
+    public String DisplayUsers() {
+        return "users";
+    }
+
 }

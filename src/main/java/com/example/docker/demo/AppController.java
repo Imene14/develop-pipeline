@@ -19,4 +19,9 @@ public class AppController {
         return "users";
     }
 
+    @GetMapping("/user/{id}")
+    public String DisplayUser() {
+        return "user";
+    }
+
 }

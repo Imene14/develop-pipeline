@@ -58,6 +58,6 @@ jobs:
           sudo docker run -d \
             --name $CONTAINER_NAME \
             --network my-net \
-            -e MYSQL_HOST=172.18.0.2
+            -e MYSQL_HOST=172.18.0.2 \
             -p 8085:8080 \
             spring-boot-app:today

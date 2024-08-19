@@ -11,7 +11,7 @@
 <script>
     const userDiv = document.getElementById('user');
     // Fetch users from the Spring Boot API
-    fetch('/api/users')
+    fetch('/api/v1/users')
         .then(response => response.json())
         .then(users => {
             users.forEach(user => {

@@ -12,11 +12,11 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/api/v1")
 public class UserController {
     @Autowired
     private UserRepo userRepository;
-    @GetMapping("/api/v1/users")
+    @GetMapping("/users")
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+</head>
+<body>
+<h2>User Details</h2>
+<div id="user-details">
+    <!-- User details will be dynamically loaded here -->
+</div>
+
+<script>
+    // Function to extract the user ID from the URL
+    function getUserIdFromUrl() {
+        const path = window.location.pathname;
+        const segments = path.split('/');
+        return segments[segments.length - 1]; // Gets the last segment, which is the user ID
+    }
+
+    // Fetch and display user details
+    function loadUserDetails() {
+        const userId = getUserIdFromUrl();
+
+        fetch(`/api/v1/user/${userId}`)
+            .then(response => response.json())
+            .then(user => {
+                const userDetailsDiv = document.getElementById('user-details');
+
+                // Display user details
+                userDetailsDiv.innerHTML = `
+                        <p>Username: ${user.name}</p>
+                        <p>Email: ${user.email}</p>
+                    `;
+            })
+            .catch(error => {
+                console.error('Error fetching user details:', error);
+                document.getElementById('user-details').textContent = 'User not found.';
+            });
+    }
+
+    // Load user details when the page is loaded
+    window.onload = loadUserDetails;
+</script>
+</body>
+</html>

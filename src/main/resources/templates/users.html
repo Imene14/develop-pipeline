@@ -16,7 +16,14 @@
         .then(users => {
             users.forEach(user => {
                 const userElement = document.createElement('p');
-                userElement.textContent = `Username: ${user.username}, Email: ${user.email}`;
+                userElement.textContent = `Username: ${user.name}, Email: ${user.email}`;
+                // Create a new anchor element
+                const linkElement = document.createElement('a');
+                linkElement.href = `user/${user.id}`;
+                linkElement.textContent = 'View User';
+
+                // Append the anchor element to the user div
+                userElement.appendChild(linkElement);
                 userDiv.appendChild(userElement);
             });
         })

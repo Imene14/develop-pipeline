@@ -37,7 +37,7 @@ public class UserController {
     public String loginUser(@RequestParam("username") String username,
                             @RequestParam("password") String password) {
         // Implement your login logic here
-        if ("admin".equals(username) && "password".equals(password)) {
+        if ("admin".equals(username) ) {
             // Replace with actual authentication logic
             return "redirect:/index";  // Redirect to a home page after successful login
         } else {

@@ -33,7 +33,7 @@ public class UserController {
     }
 
 
-    @PostMapping(value = "/login")
+    @PostMapping(value = "/login1")
     public ResponseEntity<String> loginUser(@RequestBody User loginRequest) {
         User user = userRepository.findByName(loginRequest.getName());
         if (user != null ) {

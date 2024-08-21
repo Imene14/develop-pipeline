@@ -36,8 +36,9 @@ public class UserController {
     @PostMapping("/login1")
     public String loginUser(@RequestParam("username") String username,
                             @RequestParam("password") String password) {
+        User user = userRepository.findByName(username);
         // Implement your login logic here
-        if ("admin".equals(username) ) {
+        if (user != null)  {
             // Replace with actual authentication logic
             return "redirect:/index";  // Redirect to a home page after successful login
         } else {

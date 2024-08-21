@@ -33,7 +33,7 @@ public class UserController {
 
     @Autowired
     private UserService userService;
-    @PostMapping("/login")
+    @PostMapping(value = "/login", consumes = "application/json")
     public String loginUser(@RequestBody User loginRequest) {
         User user = userService.findByUsername(loginRequest.getName());
         if (user != null ) {

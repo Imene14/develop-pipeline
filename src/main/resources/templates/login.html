@@ -168,11 +168,7 @@
             },
             body: JSON.stringify({username, password})
         })
-            .then(response => response.text())
-            .then(data => {
-                console.log(data);
-            })
-            .catch(error => console.error('Error:', error));
+
     });
     document.getElementById('loginForm').addEventListener('submit', function(event) {
         const username = document.getElementById('username').value;

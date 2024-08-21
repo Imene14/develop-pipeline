@@ -21,7 +21,7 @@ jobs:
           
       - name: Build the application
         run: |
-          mvn clean -DskipTests
+          mvn clean 
           mvn -B package --file pom.xml 
 
       - name: Build Docker Image

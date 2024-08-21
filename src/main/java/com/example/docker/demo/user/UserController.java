@@ -2,6 +2,7 @@ package com.example.docker.demo.user;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import org.springframework.web.bind.annotation.*;
@@ -34,12 +35,12 @@ public class UserController {
     @Autowired
     private UserService userService;
     @PostMapping(value = "/login", consumes = "application/json")
-    public String loginUser(@RequestBody User loginRequest) {
+    public ResponseEntity<String> loginUser(@RequestBody User loginRequest) {
         User user = userService.findByUsername(loginRequest.getName());
         if (user != null ) {
-            return "Login successful";
+            return ResponseEntity.ok("Login successful");
         } else {
-            return "Invalid username or password";
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid username or password");
         }
     }
 }

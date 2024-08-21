@@ -14,6 +14,11 @@ public class AppController {
         return "index";
     }
 
+    @GetMapping("/login")
+    public String Login() {
+        return "login";
+    }
+
     @GetMapping("/users")
     public String DisplayUsers() {
         return "users";

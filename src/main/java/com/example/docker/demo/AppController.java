@@ -42,7 +42,7 @@ public class AppController {
         // Implement your login logic here
         if (user != null)  {
             // Replace with actual authentication logic
-            return "redirect:/index";  // Redirect to a home page after successful login
+            return "index";  // Redirect to a home page after successful login
         } else {
             return "redirect:/login?error";  // Redirect back to login with an error
         }

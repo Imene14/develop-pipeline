@@ -4,10 +4,8 @@ import com.example.docker.demo.user.User;
 import com.example.docker.demo.user.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 
 import java.util.Collections;
 import java.util.Map;
@@ -37,6 +35,7 @@ public class AppController {
     @Autowired
     private UserRepo userRepository;
     @PostMapping("api/v1/login")
+    @ResponseBody
     public String loginUser(@RequestParam("username") String username,
                             @RequestParam("password") String password) {
         User user = userRepository.findByName(username);

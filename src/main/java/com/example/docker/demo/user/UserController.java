@@ -33,13 +33,15 @@ public class UserController {
     }
 
 
-    @PostMapping(value = "/login1")
-    public ResponseEntity<String> loginUser(@RequestBody User loginRequest) {
-        User user = userRepository.findByName(loginRequest.getName());
-        if (user != null ) {
-            return ResponseEntity.ok("Login successful");
+    @PostMapping("/login1")
+    public String loginUser(@RequestParam("username") String username,
+                            @RequestParam("password") String password) {
+        // Implement your login logic here
+        if ("admin".equals(username) && "password".equals(password)) {
+            // Replace with actual authentication logic
+            return "redirect:/index";  // Redirect to a home page after successful login
         } else {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid username or password");
+            return "redirect:/login?error";  // Redirect back to login with an error
         }
     }
 }

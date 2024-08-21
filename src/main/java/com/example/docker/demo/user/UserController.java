@@ -32,11 +32,10 @@ public class UserController {
         }
     }
 
-    @Autowired
-    private UserService userService;
-    @PostMapping(value = "/login", consumes = "application/json")
+
+    @PostMapping(value = "/login")
     public ResponseEntity<String> loginUser(@RequestBody User loginRequest) {
-        User user = userService.findByUsername(loginRequest.getName());
+        User user = userRepository.findByName(loginRequest.getName());
         if (user != null ) {
             return ResponseEntity.ok("Login successful");
         } else {

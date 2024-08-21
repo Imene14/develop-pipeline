@@ -3,7 +3,7 @@ package com.example.docker.demo.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,8 +14,7 @@ import java.util.Optional;
 public class UserController {
     @Autowired
     private UserRepo userRepository;
-    @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
 
     @GetMapping("/users")
     public List<User> getAllUsers() {
@@ -37,7 +36,7 @@ public class UserController {
     @PostMapping("/login")
     public String loginUser(@RequestBody User loginRequest) {
         User user = userService.findByUsername(loginRequest.getName());
-        if (user != null && bCryptPasswordEncoder.matches(loginRequest.getPassword(), user.getPassword())) {
+        if (user != null ) {
             return "Login successful";
         } else {
             return "Invalid username or password";

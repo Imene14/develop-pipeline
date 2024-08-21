@@ -24,7 +24,7 @@
         }
 
         h2 {
-            margin-bottom: 25px;
+            margin-bottom: 15px;
             color: #333;
         }
 
@@ -68,14 +68,76 @@
             margin-top: 10px;
             display: none;
         }
+        /* nav bar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            padding: 10px 20px;
+        }
+
+        .logo {
+            color: #fff;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 20px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #f4f4f4;
+        }
+
+        .burger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .burger div {
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
 
     </style>
 </head>
 <body>
+<nav class="navbar">
+    <div class="logo">MyWebsite</div>
+    <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="burger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+    </div>
+</nav>
 <div class="login-container">
     <form id="loginForm" action="/login" method="post">
         <h2>Login</h2>
         <hr>
+        <br>
         <div class="input-group">
             <label for="username">Username</label>
             <input type="text" id="username" name="username" required>

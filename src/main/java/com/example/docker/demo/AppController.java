@@ -35,7 +35,7 @@ public class AppController {
     @Autowired
     private UserRepo userRepository;
     @PostMapping("api/v1/login")
-    @ResponseBody
+
     public String loginUser(@RequestParam("username") String username,
                             @RequestParam("password") String password) {
         User user = userRepository.findByName(username);

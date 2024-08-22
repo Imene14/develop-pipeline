@@ -22,6 +22,11 @@ public class AppController {
         return "login";
     }
 
+    @GetMapping("/signup")
+    public String Signup() {
+        return "signup";
+    }
+
     @GetMapping("/users")
     public String DisplayUsers() {
         return "users";
@@ -35,10 +40,24 @@ public class AppController {
     @Autowired
     private UserRepo userRepository;
     @PostMapping("api/v1/login")
-
     public String loginUser(@RequestParam("username") String username,
                             @RequestParam("password") String password) {
         User user = userRepository.findByName(username);
+        // Implement your login logic here
+        if (user != null)  {
+            // Replace with actual authentication logic
+            return "index";  // Redirect to a home page after successful login
+        } else {
+            return "redirect:/login?error";  // Redirect back to login with an error
+        }
+    }
+
+    @PostMapping("api/v1/signup")
+    public String RegisterUser(@RequestParam("username") String username,
+                            @RequestParam("c-password") String password) {
+        User user = userRepository.findByName(username);
+        user.setPassword(password);
+        userRepository.save(user);
         // Implement your login logic here
         if (user != null)  {
             // Replace with actual authentication logic

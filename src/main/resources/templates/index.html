@@ -66,6 +66,7 @@
             padding-left: 50px;
             padding-right: 50px;
             padding-top: 30px;
+            padding-bottom: 20px;
             background-color: #f4f4f4;
         }
         .box {
@@ -108,6 +109,23 @@
             padding-left: 50px;
             padding-right: 50px;
         }
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        table th {
+            background-color: #f8f8f8;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        table tr:hover {
+            background-color: #f1f1f1;
+        }
     </style>
 </head>
 <body>
@@ -133,6 +151,33 @@
     </div>
     <div class="act">
         <h2>Recent activities</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Date</th>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>2024-08-23</td>
+                <td>Meeting</td>
+                <td>Discussion about project milestones.</td>
+            </tr>
+            <tr>
+                <td>2024-08-22</td>
+                <td>Code Review</td>
+                <td>Reviewed the latest pull requests.</td>
+            </tr>
+            <tr>
+                <td>2024-08-21</td>
+                <td>Deployment</td>
+                <td>Deployed the new version of the application.</td>
+            </tr>
+            <!-- Add more rows as needed -->
+            </tbody>
+        </table>
     </div>
 </div>
 

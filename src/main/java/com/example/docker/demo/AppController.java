@@ -27,6 +27,11 @@ public class AppController {
         return "signup";
     }
 
+    @GetMapping("/requests")
+    public String Request() {
+        return "requests";
+    }
+
     @GetMapping("/users")
     public String DisplayUsers() {
         return "users";

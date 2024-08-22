@@ -48,12 +48,17 @@
             background-color: #575757;
             border-radius: 5px;
         }
-        .content{
+        .content-sec{
             width: 85%;
             background-color: #a0c3b7;
             height: 100vh;
             top: 0;
             left: 250px;
+        }
+        .content-sec {
+            display: flex;
+            flex-direction: column;
+            background-color: #f4f4f4;
         }
         .content {
             display: flex;
@@ -61,7 +66,6 @@
             padding: 50px;
             background-color: #f4f4f4;
         }
-
         .box {
             flex: 1; /* Make each box take up an equal amount of space */
             margin: 0 30px; /* Add some space between the boxes */
@@ -83,6 +87,11 @@
         .box:last-child {
             margin-right: 0;
         }
+        .user-p{
+            height: 70px;
+            width: 50px;
+            border: 2px black solid;
+        }
     </style>
 </head>
 <body>
@@ -96,11 +105,15 @@
         <li><a href="#settings">Settings</a></li>
     </ul>
 </div>
-<div class="content">
-    <div class="box">Box 1</div>
-    <div class="box">Box 2</div>
-    <div class="box">Box 3</div>
+<div class="content-sec">
+    <div class="user-p"></div>
+    <div class="content">
+        <div class="box">Box 1</div>
+        <div class="box">Box 2</div>
+        <div class="box">Box 3</div>
+    </div>
 </div>
+
 
 
 <script>

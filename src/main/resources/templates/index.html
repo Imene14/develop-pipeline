@@ -55,6 +55,33 @@
             top: 0;
             left: 250px;
         }
+        .content {
+            display: flex;
+            justify-content: space-between; /* Space out the boxes evenly */
+            align-items: center; /* Align boxes vertically in the middle */
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        .box {
+            flex: 1; /* Make each box take up an equal amount of space */
+            margin: 0 10px; /* Add some space between the boxes */
+            padding: 20px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Optional: Adjust the margin for the first and last box to prevent overflow */
+        .box:first-child {
+            margin-left: 0;
+        }
+
+        .box:last-child {
+            margin-right: 0;
+        }
     </style>
 </head>
 <body>
@@ -68,7 +95,12 @@
         <li><a href="#settings">Settings</a></li>
     </ul>
 </div>
-<div class="content"></div>
+<div class="content">
+    <div class="box">Box 1</div>
+    <div class="box">Box 2</div>
+    <div class="box">Box 3</div>
+</div>
+
 
 <script>
     document.getElementById('example-form').addEventListener('submit', function(event) {

@@ -121,7 +121,7 @@
         #request-list{
             border: 2px black solid;
         }
-        .request-item {
+        #request-item {
             background-color: rgba(205, 133, 140, 0.42);
             border: 2px solid darkred;
             padding: 20px;
@@ -182,8 +182,8 @@
                     requestList.innerHTML = ''; // Clear the list
                     data.forEach(request => {
                         const listItem = document.createElement('div');
-                        listItem.textContent = `Type: ${request.type}, Description: ${request.description}, User name: ${request.user}`;
-                        listItem.className = 'request-item';
+                        listItem.textContent = `${request.date},Type: ${request.type}, User name: ${request.user}`;
+                        listItem.id = 'request-item';
                         requestList.appendChild(listItem);
                     });
                 })

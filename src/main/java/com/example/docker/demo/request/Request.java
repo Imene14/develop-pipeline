@@ -23,4 +23,5 @@ public class Request {
     private String user;
     private String status;
     private String description;
+    private String date;
 }

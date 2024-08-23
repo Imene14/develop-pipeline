@@ -150,6 +150,48 @@
             <option value="type2">Type 2</option>
         </select>
     </div>
+    <div class="requests-list">
+        <ul id="request-list"></ul>
+    </div>
 </div>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const requestList = document.getElementById('request-list');
+
+        // Function to fetch and display requests
+        function fetchRequests(url) {
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    requestList.innerHTML = ''; // Clear the list
+                    data.forEach(request => {
+                        const listItem = document.createElement('li');
+                        listItem.textContent = `Type: ${request.type}, Description: ${request.description}`;
+                        requestList.appendChild(listItem);
+                    });
+                })
+                .catch(error => console.error('Error fetching requests:', error));
+        }
+
+        // Initial fetch for all requests
+        fetchRequests('/api/v1/requests');
+
+        // Event listeners for buttons and filter
+        document.getElementById('approved').addEventListener('click', function() {
+            fetchRequests('/api/requests?status=Approved');
+        });
+
+        document.getElementById('non-approved').addEventListener('click', function() {
+            fetchRequests('/api/requests?status=Non-Approved');
+        });
+
+        document.getElementById('request-filter').addEventListener('change', function() {
+            const type = this.value;
+            const url = type === 'all' ? '/api/requests' : `/api/requests?type=${type}`;
+            fetchRequests(url);
+        });
+    });
+
+</script>
 </body>
 </html>

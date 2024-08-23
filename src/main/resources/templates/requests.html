@@ -75,6 +75,45 @@
             padding-right: 5px;
 
         }
+
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .status-buttons {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .status-buttons button {
+            flex: 1;
+            margin: 0 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .filter-section {
+            margin-top: 20px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .filter-section label {
+            margin-right: 10px;
+        }
+
+        .filter-section select {
+            padding: 5px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
     </style>
 </head>
 <body>
@@ -94,7 +133,19 @@
         <p>photo</p>
     </div>
     <h2 style="padding-left: 50px">Requests</h2>
+    <div class="status-buttons">
+        <button id="approved">Approved</button>
+        <button id="non-approved">Non-Approved</button>
+    </div>
 
+    <div class="filter-section">
+        <label for="request-filter">Filter Requests by Type:</label>
+        <select id="request-filter">
+            <option value="all">All</option>
+            <option value="type1">Type 1</option>
+            <option value="type2">Type 2</option>
+        </select>
+    </div>
 </div>
 </body>
 </html>

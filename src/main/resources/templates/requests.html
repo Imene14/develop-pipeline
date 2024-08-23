@@ -190,6 +190,7 @@
                         const desc = document.createElement('div');
                         desc.className = 'hidden';
                         desc.textContent = `description : ${request.description}`;
+                        listItem.appendChild(desc);
                         // Add click event listener to show the description
                         listItem.addEventListener('click', () => {
                             desc.classList.remove('hidden');

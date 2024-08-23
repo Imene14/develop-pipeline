@@ -121,6 +121,15 @@
         #request-list{
             border: 2px black solid;
         }
+        .request-item {
+            background-color: lightblue;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+
     </style>
 </head>
 <body>
@@ -170,6 +179,7 @@
                     data.forEach(request => {
                         const listItem = document.createElement('div');
                         listItem.textContent = `Type: ${request.type}, Description: ${request.description}, User name: ${request.user}`;
+                        listItem.className = 'request-item';
                         requestList.appendChild(listItem);
                     });
                 })

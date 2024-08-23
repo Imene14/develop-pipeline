@@ -3,6 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .sidebar {
+            width: 15%;
+            height: 100vh;
+            background-color: #333;
+
+            top: 0;
+            left: 0;
+            padding-top: 20px;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        }
+
+        .sidebar h2 {
+            color: #fff;
+            margin-bottom: 30px;
+            margin-left: 20px;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            padding: 15px 20px;
+        }
+
+        .sidebar ul li a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+        }
+
+        .sidebar ul li a:hover {
+            background-color: #575757;
+            border-radius: 5px;
+        }
+        .content-sec{
+            width: 85%;
+            background-color: #a0c3b7;
+            height: 100vh;
+            top: 0;
+            left: 250px;
+        }
+        .content-sec {
+            display: flex;
+            flex-direction: column;
+            background-color: #f4f4f4;
+        }
+        .content {
+            display: flex;
+            justify-content: space-between; /* Space out the boxes evenly */
+            padding-left: 50px;
+            padding-right: 50px;
+            padding-top: 30px;
+            padding-bottom: 20px;
+            background-color: #f4f4f4;
+        }
+        .box {
+            flex: 1; /* Make each box take up an equal amount of space */
+            margin: 0 30px; /* Add some space between the boxes */
+            padding: 20px;
+            border-bottom: 2px solid black;
+            border-right: 2px solid black;
+            color: #fff;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            height: 150px;
+        }
+
+        /* Optional: Adjust the margin for the first and last box to prevent overflow */
+        .box:first-child {
+            margin-left: 0;
+        }
+
+        .box:last-child {
+            margin-right: 0;
+        }
+        .user-p{
+            height: 60px;
+            width: 180px;
+            border: 2px black solid;
+            border-radius: 12px;
+            margin-left: 1050px;
+            margin-top: 20px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding-left: 5px;
+            padding-right: 5px;
+
+        }
+        .act{
+            padding-left: 50px;
+            padding-right: 50px;
+        }
+        table{
+            width: 100%;
+        }
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        table th {
+            background-color: #f8f8f8;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        table tr:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
 </head>
 <body>
 <div class="sidebar">

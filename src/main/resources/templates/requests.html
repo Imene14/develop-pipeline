@@ -159,7 +159,7 @@
 </div>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        const requestList = document.getElementById('request-list');
+        const requestList = document.getElementById('requests-list');
 
         // Function to fetch and display requests
         function fetchRequests(url) {
@@ -169,6 +169,7 @@
                     requestList.innerHTML = ''; // Clear the list
                     data.forEach(request => {
                         const listItem = document.createElement('div');
+                        listItem.id = 'request-list';
                         listItem.textContent = `Type: ${request.type}, Description: ${request.description}, User name: ${request.user}`;
                         requestList.appendChild(listItem);
                     });

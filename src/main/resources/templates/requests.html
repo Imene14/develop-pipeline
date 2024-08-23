@@ -166,7 +166,7 @@
                     requestList.innerHTML = ''; // Clear the list
                     data.forEach(request => {
                         const listItem = document.createElement('li');
-                        listItem.textContent = `Type: ${request.type}, Description: ${request.description}`;
+                        listItem.textContent = `Type: ${request.type}, Description: ${request.description}, User name: ${request.user}`;
                         requestList.appendChild(listItem);
                     });
                 })

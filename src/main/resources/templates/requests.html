@@ -118,6 +118,9 @@
             border-radius: 5px;
             border: 1px solid #ddd;
         }
+        #request-list{
+            border: 2px black solid;
+        }
     </style>
 </head>
 <body>
@@ -151,7 +154,7 @@
         </select>
     </div>
     <div class="requests-list">
-        <ul id="request-list"></ul>
+        <div id="request-list"></div>
     </div>
 </div>
 <script>
@@ -165,7 +168,7 @@
                 .then(data => {
                     requestList.innerHTML = ''; // Clear the list
                     data.forEach(request => {
-                        const listItem = document.createElement('li');
+                        const listItem = document.createElement('div');
                         listItem.textContent = `Type: ${request.type}, Description: ${request.description}, User name: ${request.user}`;
                         requestList.appendChild(listItem);
                     });

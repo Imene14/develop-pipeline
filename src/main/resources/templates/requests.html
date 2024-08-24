@@ -160,6 +160,11 @@
             position: absolute;
             right: 70px;
         }
+        .end2{
+            position: absolute;
+            right: 70px;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
@@ -258,7 +263,7 @@
                         const editReq = document.createElement('a');
                         editReq.href=`/request/${request.id}`;
                         editReq.textContent = 'Edit Request';
-                        editReq.className = 'end';
+                        editReq.className = 'end2';
                         desc.appendChild(editReq);
 
                         listItem.appendChild(desc);

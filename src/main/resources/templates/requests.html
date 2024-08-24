@@ -199,8 +199,24 @@
                         const listItem = document.createElement('div');
                         listItem.className = 'req-div';
                         const TitleItem = document.createElement('div');
-                        TitleItem.textContent = `${request.date},Type: ${request.type}, User name: ${request.user}`;
                         TitleItem.id = 'request-item';
+
+// Create and append date paragraph
+                        const dateParagraph = document.createElement('p');
+                        dateParagraph.textContent = `Date: ${request.date}`;
+                        TitleItem.appendChild(dateParagraph);
+
+// Create and append type paragraph
+                        const typeParagraph = document.createElement('p');
+                        typeParagraph.textContent = `Type: ${request.type}`;
+                        TitleItem.appendChild(typeParagraph);
+
+// Create and append user name paragraph
+                        const userParagraph = document.createElement('p');
+                        userParagraph.textContent = `User name: ${request.user}`;
+                        TitleItem.appendChild(userParagraph);
+
+// Append the entire structure to the listItem
                         listItem.appendChild(TitleItem);
                         const desc = document.createElement('div');
                         desc.className = 'hidden';

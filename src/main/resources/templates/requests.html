@@ -237,6 +237,11 @@
                         userParagraph.textContent = `User name: ${request.user}`;
                         TitleItem.appendChild(userParagraph);
 
+                        const icon3 = document.createElement('i');
+                        icon3.className = 'fa-solid fa-caret-down';
+                        TitleItem.appendChild(icon3);
+
+
 // Append the entire structure to the listItem
                         listItem.appendChild(TitleItem);
                         const desc = document.createElement('div');

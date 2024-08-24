@@ -181,12 +181,7 @@
         </select>
     </div>
     <div class="requests-list">
-        <div id="request-list">
-            <div class="hidden" id="1">
-                <p>Object :</p><br>
-                <p>Content: I want an attestation of internship complition</p>
-            </div>
-        </div>
+        <div id="request-list"></div>
 
     </div>
 </div>
@@ -207,11 +202,10 @@
                         TitleItem.textContent = `${request.date},Type: ${request.type}, User name: ${request.user}`;
                         TitleItem.id = 'request-item';
                         listItem.appendChild(TitleItem);
-                        //const desc = document.createElement('div');
-                        //desc.className = 'hidden';
-                        //desc.textContent = `description :  ${request.description}`;
-                        //listItem.appendChild(desc);
-                        desc = document.getElementById('1');
+                        const desc = document.createElement('div');
+                        desc.className = 'hidden';
+                        desc.textContent = `description :  ${request.description}`;
+                        listItem.appendChild(desc);
                         // Add click event listener to show the description
                         listItem.addEventListener('click', () => {
                             desc.classList.toggle('hidden');

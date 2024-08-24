@@ -219,6 +219,10 @@
                         dateParagraph.textContent = `Date: ${request.date}`;
                         TitleItem.appendChild(dateParagraph);
 
+                        const icon2 = document.createElement('i');
+                        icon1.className = 'fa-solid fa-file-circle-question';
+                        TitleItem.appendChild(icon2);
+
 // Create and append type paragraph
                         const typeParagraph = document.createElement('p');
                         typeParagraph.textContent = `Type: ${request.type}`;
@@ -250,7 +254,7 @@
                         requestList.appendChild(listItem);
                     });
                 })
-                    .catch(error => console.error('Error fetching requests:', error));
+                .catch(error => console.error('Error fetching requests:', error));
         }
 
         // Initial fetch for all requests

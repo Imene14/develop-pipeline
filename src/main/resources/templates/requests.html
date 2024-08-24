@@ -185,8 +185,10 @@
                     requestList.innerHTML = ''; // Clear the list
                     data.forEach(request => {
                         const listItem = document.createElement('div');
-                        listItem.textContent = `${request.date},Type: ${request.type}, User name: ${request.user}`;
-                        listItem.id = 'request-item';
+                        const TitleItem = document.createElement('div');
+                        TitleItem.textContent = `${request.date},Type: ${request.type}, User name: ${request.user}`;
+                        TitleItem.id = 'request-item';
+                        listItem.appendChild(TitleItem);
                         const desc = document.createElement('div');
                         desc.className = 'hidden';
                         desc.textContent = `description : ${request.description}`;

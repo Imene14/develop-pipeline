@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script src="https://kit.fontawesome.com/a1b577c191.js" crossorigin="anonymous"></script>
     <title>Title</title>
     <style>
         body {
@@ -214,6 +215,10 @@
                         typeParagraph.textContent = `Type: ${request.type}`;
                         TitleItem.appendChild(typeParagraph);
 
+                        const icon = document.createElement('i');
+                        icon.className = 'fa-solid fa-user';
+                        TitleItem.appendChild(icon);
+
 // Create and append user name paragraph
                         const userParagraph = document.createElement('p');
                         userParagraph.textContent = `User name: ${request.user}`;
@@ -236,7 +241,7 @@
                         requestList.appendChild(listItem);
                     });
                 })
-                .catch(error => console.error('Error fetching requests:', error));
+                    .catch(error => console.error('Error fetching requests:', error));
         }
 
         // Initial fetch for all requests

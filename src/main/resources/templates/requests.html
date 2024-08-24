@@ -205,6 +205,9 @@
                         const desc = document.createElement('div');
                         desc.className = 'hidden';
                         desc.textContent = `description :  ${request.description}`;
+                        const reqBody = document.createElement('p');
+                        reqBody.textContent = "this is the request body description, I wnat a document";
+                        desc.appendChild(reqBody)
                         listItem.appendChild(desc);
                         // Add click event listener to show the description
                         listItem.addEventListener('click', () => {

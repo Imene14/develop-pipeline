@@ -193,7 +193,7 @@
                         listItem.appendChild(desc);
                         // Add click event listener to show the description
                         listItem.addEventListener('click', () => {
-                            desc.classList.remove('hidden');
+                            desc.classList.toggle('hidden');
                         });
                         requestList.appendChild(listItem);
                     });

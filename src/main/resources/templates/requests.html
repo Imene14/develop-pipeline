@@ -137,6 +137,12 @@
         .hidden{
             visibility: hidden;
         }
+        .req-div{
+            border: 2px solid black;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
     </style>
 </head>
 <body>
@@ -185,6 +191,7 @@
                     requestList.innerHTML = ''; // Clear the list
                     data.forEach(request => {
                         const listItem = document.createElement('div');
+                        listItem.className = 'req-div';
                         const TitleItem = document.createElement('div');
                         TitleItem.textContent = `${request.date},Type: ${request.type}, User name: ${request.user}`;
                         TitleItem.id = 'request-item';

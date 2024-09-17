@@ -52,7 +52,7 @@
             width: 85%;
             background-color: #a0c3b7;
             height: 100vh;
-            top: 0;
+            top: 100px;
             left: 250px;
         }
         .content-sec {
@@ -61,6 +61,7 @@
             background-color: #f4f4f4;
         }
         .content {
+            margin-top: 100px;
             display: flex;
             justify-content: space-between; /* Space out the boxes evenly */
             padding-left: 50px;
@@ -70,16 +71,38 @@
             background-color: #f4f4f4;
         }
         .box {
-            flex: 1; /* Make each box take up an equal amount of space */
-            margin: 0 30px; /* Add some space between the boxes */
+            flex: 1;
+            margin: 0 30px;
             padding: 20px;
-            border-bottom: 2px solid black;
-            border-right: 2px solid black;
+            border: 2px solid black;
             color: #fff;
             text-align: center;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             height: 150px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .circle {
+            width: 70px;
+            height: 70px;
+            background-color: white;
+            border: solid 5px black;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .circle p {
+            color: black;
+            font-size: 18px;
+            margin: 0;
         }
 
         /* Optional: Adjust the margin for the first and last box to prevent overflow */
@@ -95,7 +118,9 @@
             width: 180px;
             border: 2px black solid;
             border-radius: 12px;
-            margin-left: 1050px;
+            position: absolute;
+            right: 10px;
+            margin-bottom: 50px;
             margin-top: 20px;
             display: flex;
             flex-direction: row;
@@ -144,13 +169,34 @@
 </div>
 <div class="content-sec">
     <div class="user-p">
-        <p>Username</p>
-        <p>photo</p>
+        <h3 style="margin-left: 10px">Admin</h3>
+        <img src="/download.png" alt="image" width="50" height="50">
     </div>
     <div class="content">
-        <div class="box">Box 1</div>
-        <div class="box">Box 2</div>
-        <div class="box">Box 3</div>
+        <!-- Box 1: Documents -->
+        <div class="box" style="color: black; ">
+            <div class="circle">
+                <p>45 doc</p>
+            </div>
+
+            <p>Pending: 10</p>
+        </div>
+
+        <!-- Box 2: Requests -->
+        <div class="box" style="color: black; ">
+            <div class="circle" style="color: black; ">
+                <p>23 req</p>
+            </div>
+            <p>Approved: 15</p>
+        </div>
+
+        <!-- Box 3: Users -->
+        <div class="box" style="color: black; ">
+            <div class="circle" style="color: black; ">
+                <p>150 user</p>
+            </div>
+            <p>Admins: 5</p>
+        </div>
     </div>
     <div class="act">
         <h2>Recent activities</h2>
@@ -158,27 +204,42 @@
             <thead>
             <tr>
                 <th>Date</th>
-                <th>Type</th>
-                <th>Description</th>
+                <th>Request Type</th>
+                <th>Action Taken</th>
+                <th>Status</th>
             </tr>
             </thead>
             <tbody>
             <tr>
                 <td>2024-08-23</td>
-                <td>Meeting</td>
-                <td>Discussion about project milestones.</td>
+                <td>Document Attestation</td>
+                <td>Generated and sent attestation document</td>
+                <td>Completed</td>
             </tr>
             <tr>
                 <td>2024-08-22</td>
-                <td>Code Review</td>
-                <td>Reviewed the latest pull requests.</td>
+                <td>Leave Approval</td>
+                <td>Reviewed and approved leave request</td>
+                <td>Approved</td>
             </tr>
             <tr>
                 <td>2024-08-21</td>
-                <td>Deployment</td>
-                <td>Deployed the new version of the application.</td>
+                <td>Certificate Request</td>
+                <td>Processed and generated certificate</td>
+                <td>Pending</td>
             </tr>
-            <!-- Add more rows as needed -->
+            <tr>
+                <td>2024-08-20</td>
+                <td>Profile Update</td>
+                <td>Updated user profile information</td>
+                <td>In Progress</td>
+            </tr>
+            <tr>
+                <td>2024-08-19</td>
+                <td>Salary Slip Request</td>
+                <td>Generated and sent salary slip</td>
+                <td>Completed</td>
+            </tr>
             </tbody>
         </table>
     </div>

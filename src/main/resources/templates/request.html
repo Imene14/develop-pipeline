@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Attestation Request</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        .sidebar {
+            width: 13%;
+            height: 100vh;
+            background-color: #333;
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding-top: 20px;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        }
+
+        .sidebar h2 {
+            color: #fff;
+            margin-bottom: 30px;
+            margin-left: 20px;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            padding: 15px 20px;
+        }
+
+        .sidebar ul li a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+        }
+
+        .sidebar ul li a:hover {
+            background-color: #575757;
+            border-radius: 5px;
+        }
+        .content-sec{
+            width: 85%;
+            background-color: #a0c3b7;
+            height: 100vh;
+            top: 0;
+            left: 250px;
+        }
+        .content-sec {
+            display: flex;
+            flex-direction: column;
+            background-color: #f4f4f4;
+        }
+        .user-p{
+            height: 60px;
+            width: 180px;
+            border: 2px black solid;
+            border-radius: 12px;
+            position: absolute;
+            right: 10px;
+            margin-bottom: 50px;
+            margin-top: 20px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding-left: 5px;
+            padding-right: 5px;
+
+        }
+        .container {
+            display: flex;
+            width: 80%;
+            position: absolute;
+            left: 16.5%;
+            top: 15%;
+            /*max-width: 1200px;*/
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            padding-bottom: 0;
+        }
+
+        .left-section, .right-section {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .left-section {
+            background-color: #f9f9f9;
+            border-right: 2px solid #e0e0e0;
+
+        }
+
+        .left-section h2, .right-section h2 {
+            margin-top: 0;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .right-section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+
+        #document-display {
+            margin-top: 0px;
+            padding: 10px;
+            background-color: #f4f4f4;
+            border-radius: 8px;
+            width: 100%;
+            height: 490px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px dashed #ccc;
+            color: #666;
+        }
+        #second{
+            position: absolute;
+            top: 40%;
+        }
+        #first{
+            position: absolute;
+            top: 40px;
+        }
+
+
+         #pdfViewer {
+
+             overflow: hidden;
+             width: 100%;
+             height: 620px;
+         }
+        iframe {
+
+            width: 100%;
+            height: 620px;
+            clip-path: inset(10% 5% 0% 2%);
+        }
+
+    </style>
+</head>
+<body>
+<div class="sidebar">
+    <h2>Logo</h2>
+    <ul>
+        <li><a href="main">Main</a></li>
+        <li><a href="requests">Requests</a></li>
+        <li><a href="#employees">Employees</a></li>
+        <li><a href="#documents">Documents</a></li>
+        <li><a href="#settings">Settings</a></li>
+    </ul>
+</div>
+<div class="content-sec">
+    <div class="user-p">
+        <h3 style="margin-left: 10px">Admin</h3>
+        <img src="/download.png" alt="image" width="50" height="50">
+    </div>
+</div>
+<div class="container">
+    <!-- Left Section: Request Info -->
+    <div class="left-section">
+        <div id="first">
+            <h2>Request Information</h2>
+            <p><strong>Date:</strong> 23/08/2024:11:14</p>
+            <p><strong>Type of Document:</strong> Attestation of Internship completion</p>
+            <p><strong>Project:</strong> web application development</p>
+            <p><strong>Duration:</strong> 2 mounths: 03/07/2024 to 30/08/2024</p>
+            <br>
+            <hr>
+            <br>
+        </div>
+
+        <div id="second">
+            <br>
+            <br><br>
+            <h2>User Information</h2>
+            <p><strong>User Name:</strong> Imene Zarga</p>
+            <p><strong>Domain:</strong> Development department</p>
+            <p><strong>Title:</strong> Intern</p>
+            <p><strong>Email:</strong> imen.zarga1@gmail.com</p>
+            <p><strong>Phone number:</strong> 55 610 690</p>
+            <button id="generate-btn">Generate Document</button>
+        </div>
+    </div>
+
+    <!-- Right Section: Document Display -->
+    <div class="right-section">
+        <h3>Generated Document</h3>
+        <div id="document-display">
+            <!-- The document will be displayed here when generated -->
+            <div id="pdfViewer"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('generate-btn').addEventListener('click', function() {
+
+            // URL of the service that generates the PDF
+            const pdfUrl = 'http://localhost:5000/generate';
+
+            fetch(pdfUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.blob(); // Get the PDF as a blob
+                })
+                .then(blob => {
+                    // Create an object URL for the blob
+                    const url = URL.createObjectURL(blob);
+
+                    // Create an iframe to display the PDF
+                    const iframe = document.createElement('iframe');
+                    iframe.src = url;
+                    iframe.width = '100%';
+                    iframe.height = '620px';
+
+                    // Append the iframe to the page
+                    document.getElementById('pdfViewer').innerHTML = ''; // Clear previous content
+                    document.getElementById('pdfViewer').appendChild(iframe);
+
+                    // Clean up the object URL after use
+                    iframe.onload = () => {
+                        URL.revokeObjectURL(url);
+                    };
+                })
+                .catch(error => {
+                    console.error('There was a problem with the fetch operation:', error);
+                });
+
+
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const reqId = getUserIdFromUrl();
+        // Replace with your API URL
+        const apiUrl = `/api/v1/request/${reqId}`;
+
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                document.querySelector('#first').innerHTML = `
+                <h2>Request Information</h2>
+                <p><strong>Document type:</strong> ${request.type}</p>
+                <p><strong>User:</strong> ${request.user}</p>
+                <p><strong>Date:</strong> ${request.date}</p>
+                <p><strong>Declaration:</strong> ${request.description}</p>
+                <button id="generate-btn">Generate Document</button>
+            `;
+            })
+            .catch(error => console.error('Error fetching user info:', error));
+    });
+
+</script>
+</body>
+</html>

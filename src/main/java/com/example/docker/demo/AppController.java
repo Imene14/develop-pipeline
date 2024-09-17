@@ -42,6 +42,11 @@ public class AppController {
         return "user";
     }
 
+    @GetMapping("/request/{id}")
+    public String DisplayReq() {
+        return "request";
+    }
+
     @Autowired
     private UserRepo userRepository;
     @PostMapping("api/v1/login")
